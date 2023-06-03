@@ -1,27 +1,66 @@
-# Gift List
+# Ethereum Verification using Merkle Tree
 
-To get started with the repository, clone it and then run `npm install` in the top-level directory to install the depedencies.
+## Description
 
-There are three folders in this repository:
+This project aims to provide a practical understanding of how verification works in the Ethereum network using a Merkle Tree data structure. It demonstrates a simple client-side and server-side implementation where the server maintains a list of people in the git list, and the client generates a proof using a Merkle Tree to verify the presence of a specific person in the list. The server then validates the proof using the Merkle Tree's root hash as a verification mechanism.
 
-## Client
+## Installation
 
-You can run the client from the top-level directory with `node client/index`. This file is a script which will send an HTTP request to the server.
+To install and run this project locally, follow these steps:
 
-Think of the client as the _prover_ here. It needs to prove to the server that some `name` is in the `MERKLE_ROOT` on the server. 
+1. Clone the repository: `git clone <repository_url>`
+2. Navigate to the project directory: `cd project-directory`
+3. Install dependencies: `npm install`
+4. [Add any additional steps or instructions for setting up the project environment, database connections, etc.]
 
-## Server
+## Usage
 
-You can run the server from the top-level directory with `node server/index`. This file is an express server which will be hosted on port 1225 and respond to the client's request.
+To use this project, follow the instructions below:
 
-Think of the server as the _verifier_ here. It needs to verify that the `name` passed by the client is in the `MERKLE_ROOT`. If it is, then we can send the gift! 
+1. Start the server-side application: `nodemon ./server/index`
+2. Start the client-side application: `nodemon ./client/index`
 
-## Utils
+## Components
 
-There are a few files in utils:
+### Client-side
 
-- The `niceList.json` which contains all the names of the people who deserve a gift this year (this is randomly generated, feel free to add yourself and others to this list!)
-- The `example.js` script shows how we can generate a root, generate a proof and verify that some value is in the root using the proof. Try it out from the top-level folder with `node/example.js`
-- The `MerkleTree.js` should look familiar from the Merkle Tree module! This one has been modified so you should not have to deal with any crypto type conversion. You can import this in your client/server
-- The `verifyProof.js` should also look familiar. This was the last stage in the module. You can use this function to prove a name is in the merkle root, as show in the example.
-# giftList
+The client-side application interacts with the server to request proof for a specific person's presence in the list. It utilizes a Merkle Tree data structure to generate the proof. The steps involved in the client-side process are as follows:
+
+1. Connect to the server and request proof for a person's presence in the list.
+2. Generate the proof using the Merkle Tree structure.
+3. Submit the proof to the server for verification.
+
+### Server-side
+
+The server-side application stores the actual list of people in the git list. It receives proof from the client and verifies it using the Merkle Tree structure. The steps involved in the server-side process are as follows:
+
+1. Receive the request from the client for proof verification.
+2. Retrieve the Merkle Tree root hash.
+3. Verify the proof provided by the client using the Merkle Tree structure and the root hash.
+4. Respond to the client with the verification result.
+
+### Merkle Tree
+
+The Merkle Tree is a binary tree data structure used for efficiently verifying the integrity of data. In this project, the Merkle Tree is utilized to create a tamper-evident data structure for the list of people in the git list. The root hash of the Merkle Tree serves as a cryptographic proof of the entire data set's integrity.
+
+## Additional Information
+
+- Verification is a critical aspect of the Ethereum network, ensuring the integrity and validity of transactions and data. The use of Merkle Trees in Ethereum allows for efficient verification of large data sets without the need to process every individual item.
+
+- By utilizing a Merkle Tree to store the list of people in the git list, the server can provide an efficient and secure proof verification mechanism. The client can generate a proof by providing the necessary leaf nodes and hashes, which the server can verify using the Merkle Tree's root hash.
+
+- This project serves as a practical example of how Merkle Trees can be employed for verification purposes in the Ethereum network. It highlights the importance of cryptographic proofs in ensuring data integrity and provides a foundation for exploring more complex use cases in Ethereum-based applications.
+
+
+## License
+
+This project is licensed under the MIT License, which allows you to freely use, modify, and distribute the code, subject to certain conditions.
+
+## Contact
+
+If you have any questions, suggestions, or feedback, please contact  through links provided in the Github Profile.
+
+## References
+- https://blog.ethereum.org/2015/11/15/merkling-in-ethereum
+
+
