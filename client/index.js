@@ -1,7 +1,6 @@
 const axios = require('axios');
 const niceList = require('../utils/niceList.json');
 const MerkleTree1 = require('./MerkleTree');
-const MerkleTree2 = require('../utils/MerkleTree');
 const { text } = require('express');
 
 const serverUrl = 'http://localhost:1225';
